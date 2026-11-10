@@ -1,0 +1,277 @@
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== ESTILOS GENERALES ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ===== ENCABEZADO ===== */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: #764ba2;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: 2px;
+}
+
+/* ===== NAVEGACIÓN ===== */
+nav {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* ===== SECCIONES ===== */
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #667eea;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* ===== TABLA ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #667eea;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ===== FORMULARIO ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input, textarea, select {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+button {
+    background-color: #764ba2;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #667eea;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+footer {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* aqui creo la clase destacado para diseño a algunos textos */
+.destacado {
+    background-color: #ffd700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/*  MULTIMEDIA   */
+
+/*  IMÁGEN */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 15px auto;
+    
+}
+
+/*  video  */
+.multimedia {
+    display: block;            
+    width: 100%;               
+    max-width: 500px;         
+    margin: 15px auto;         
+    border-radius: 10px;     
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+
+audio.multimedia {
+    box-shadow: none;
+    background-color: #f2f2f2;  /* Fondo gris claro para que resalte */
+    padding: 5px;
+}
+
+
+/* ===== ENLACES (BOTONES) — NUEVO ===== */
+.boton-enlace {
+    display: inline-block;      
+    background-color: #764ba2;    
+    color: white;            
+    padding: 12px 24px;         
+    border-radius: 8px;        
+    text-decoration: none;      
+    font-weight: 600;         
+    margin: 10px 5px;          
+    transition: background 0.3s, transform 0.3s;
+}
+
+.boton-enlace:hover {
+    background-color: #667eea;  
+    transform: translateY(-3px); 
+}
+
+
+
+
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+/* ===== EFECTOS CON IMÁGENES ===== */
+
+/* 1. Imagen circular (tipo avatar) */
+.img-circular {
+    border-radius: 50%;              /* Hace la imagen un círculo perfecto */
+    width: 200px;                    /* Ancho fijo para que sea simétrico */
+    height: 200px;                   /* Alto igual al ancho */
+    object-fit: cover;               /* Recorta sin deformar */
+    border: 4px solid #764ba2;       /* Borde morado decorativo */
+}
+
+/* 2. Imagen con sombra fuerte */
+.img-sombra {
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);   /* Sombra grande y visible */
+}
+
+/* 3. Imagen en blanco y negro que vuelve a color al pasar el mouse */
+.img-bn {
+    max-width: 400px;
+    filter: grayscale(100%);          /* 100% = blanco y negro total */
+    transition: filter 0.4s ease;     /* Transición suave */
+}
+.img-bn:hover {
+    filter: grayscale(0%);            /* 0% = color original */
+}
+
+/* 4. Imagen que crece al pasar el mouse */
+.img-zoom {
+    max-width: 400px;
+    transition: transform 0.3s ease;  /* Suaviza el crecimiento */
+}
+.img-zoom:hover {
+    transform: scale(1.1);            /* Crece un 10% */
+}
+
+/* 5. Imagen con borde decorativo */
+.img-borde {
+    max-width: 400px;
+    border: 6px solid #667eea;        /* Borde azul-morado grueso */
+    padding: 10px;                    /* Espacio entre borde e imagen */
+    background-color: white;          /* Fondo blanco tipo marco */
+    border-radius: 15px;
+}
+
+/* 6. Galería con Flexbox */
+.galeria {
+    display: flex;                    /* Coloca las imágenes en fila */
+    flex-wrap: wrap;                  /* Si no caben, saltan de línea */
+    gap: 15px;                        /* Espacio entre imágenes */
+    justify-content: center;          /* Centra las imágenes */
+    margin-top: 15px;
+}
+.galeria img {
+    width: 180px;                     /* Ancho fijo para cada imagen */
+    height: 180px;                    /* Alto igual al ancho */
+    object-fit: cover;                /* Recorta sin deformar */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.galeria img:hover {
+    transform: scale(1.05);           /* Crece un poco */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);   /* Sombra más grande */
+}

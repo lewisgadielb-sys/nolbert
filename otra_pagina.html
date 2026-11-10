@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Juegos - Filtros</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: #764ba2;
+            font-size: 2.2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* ===== FILTROS ===== */
+        .filtros {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filtros input,
+        .filtros select {
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .filtros input:focus,
+        .filtros select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        /* ===== TABLA ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #667eea;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        th:hover {
+            background-color: #764ba2;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover td {
+            background-color: #eef1ff;
+        }
+
+        /* ===== ETIQUETAS DE DIFICULTAD ===== */
+        .tag {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .facil   { background-color: #27ae60; }
+        .media   { background-color: #f39c12; }
+        .dificil { background-color: #e74c3c; }
+
+        /* ===== MENSAJE SIN RESULTADOS ===== */
+        #sin-resultados {
+            text-align: center;
+            padding: 30px;
+            font-style: italic;
+            color: #888;
+            display: none;
+            background-color: white;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        /* ===== BOTÓN VOLVER ===== */
+        .boton-volver {
+            display: inline-block;
+            background-color: #764ba2;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .boton-volver:hover {
+            background-color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .filtros { flex-direction: column; }
+            header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎮 Catálogo de Juegos</h1>
+        <p>Filtra y busca en tiempo real</p>
+    </header>
+
+    <!-- ===== FILTROS ===== -->
+    <div class="filtros">
+        <input type="text" id="buscador" placeholder="🔍 Buscar por nombre...">
+
+        <select id="filtroCategoria">
+            <option value="">Todas las categorías</option>
+            <option value="Acción">Acción</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Deportes">Deportes</option>
+            <option value="Estrategia">Estrategia</option>
+            <option value="RPG">RPG</option>
+        </select>
+
+        <select id="filtroDificultad">
+            <option value="">Todas las dificultades</option>
+            <option value="Fácil">Fácil</option>
+            <option value="Media">Media</option>
+            <option value="Difícil">Difícil</option>
+        </select>
+    </div>
+
+    <!-- ===== TABLA ===== -->
+    <table>
+        <thead>
+            <tr>
+                <th data-campo="nombre">Nombre ↕</th>
+                <th data-campo="categoria">Categoría ↕</th>
+                <th data-campo="dificultad">Dificultad ↕</th>
+                <th data-campo="anio">Año ↕</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+            <!-- JavaScript llenará esto -->
+        </tbody>
+    </table>
+
+    <p id="sin-resultados">😢 No se encontraron juegos con esos filtros.</p>
+
+    <!-- ===== VOLVER ===== -->
+    <div style="text-align: center;">
+        <a href="trabajo.html" class="boton-volver">← Volver a la página principal</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Mirra - Catálogo de Juegos</p>
+    </footer>
+
+    <script>
+        // ===== 1. NUESTROS DATOS (simulan la base de datos) =====
+        const juegos = [
+            { nombre: "The Legend of Zelda",  categoria: "Aventura",  dificultad: "Media",   anio: 2017 },
+            { nombre: "God of War",           categoria: "Acción",    dificultad: "Difícil", anio: 2018 },
+            { nombre: "FIFA 24",              categoria: "Deportes",  dificultad: "Fácil",   anio: 2023 },
+            { nombre: "Civilization VI",      categoria: "Estrategia",dificultad: "Difícil", anio: 2016 },
+            { nombre: "Elden Ring",           categoria: "RPG",       dificultad: "Difícil", anio: 2022 },
+            { nombre: "Minecraft",            categoria: "Aventura",  dificultad: "Fácil",   anio: 2011 },
+            { nombre: "Call of Duty",         categoria: "Acción",    dificultad: "Media",   anio: 2023 },
+            { nombre: "Mario Kart 8",         categoria: "Deportes",  dificultad: "Fácil",   anio: 2014 },
+            { nombre: "Starcraft II",         categoria: "Estrategia",dificultad: "Difícil", anio: 2010 },
+            { nombre: "Final Fantasy VII",    categoria: "RPG",       dificultad: "Media",   anio: 1997 }
+        ];
+
+        // ===== 2. REFERENCIAS AL DOM =====
+        const cuerpoTabla      = document.getElementById("cuerpoTabla");
+        const buscador         = document.getElementById("buscador");
+        const filtroCategoria  = document.getElementById("filtroCategoria");
+        const filtroDificultad = document.getElementById("filtroDificultad");
+        const sinResultados    = document.getElementById("sin-resultados");
+
+        // ===== 3. FUNCIÓN PARA DIBUJAR LA TABLA =====
+        function dibujarTabla(lista) {
+            cuerpoTabla.innerHTML = ""; // Limpiamos la tabla
+
+            if (lista.length === 0) {
+                sinResultados.style.display = "block";
+                return;
+            }
+            sinResultados.style.display = "none";
+
+            lista.forEach(juego => {
+                const claseDificultad =
+                    juego.dificultad === "Fácil"   ? "facil"   :
+                    juego.dificultad === "Media"   ? "media"   : "dificil";
+
+                const fila = `
+                    <tr>
+                        <td>${juego.nombre}</td>
+                        <td>${juego.categoria}</td>
+                        <td><span class="tag ${claseDificultad}">${juego.dificultad}</span></td>
+                        <td>${juego.anio}</td>
+                    </tr>
+                `;
+                cuerpoTabla.innerHTML += fila;
+            });
+        }
+
+        // ===== 4. FUNCIÓN QUE APLICA TODOS LOS FILTROS =====
+        function aplicarFiltros() {
+            const texto     = buscador.value.toLowerCase();
+            const categoria = filtroCategoria.value;
+            const dificultad= filtroDificultad.value;
+
+            const resultado = juegos.filter(j => {
+                const coincideNombre     = j.nombre.toLowerCase().includes(texto);
+                const coincideCategoria  = categoria  === "" || j.categoria  === categoria;
+                const coincideDificultad = dificultad === "" || j.dificultad === dificultad;
+                return coincideNombre && coincideCategoria && coincideDificultad;
+            });
+
+            dibujarTabla(resultado);
+        }
+
+        // ===== 5. EVENTOS =====
+        buscador.addEventListener("input", aplicarFiltros);
+        filtroCategoria.addEventListener("change", aplicarFiltros);
+        filtroDificultad.addEventListener("change", aplicarFiltros);
+
+        // ===== 6. ORDENAR POR COLUMNA =====
+        let ordenAscendente = true;
+        document.querySelectorAll("th").forEach(th => {
+            th.addEventListener("click", () => {
+                const campo = th.dataset.campo;
+                juegos.sort((a, b) => {
+                    if (a[campo] < b[campo]) return ordenAscendente ? -1 : 1;
+                    if (a[campo] > b[campo]) return ordenAscendente ? 1 : -1;
+                    return 0;
+                });
+                ordenAscendente = !ordenAscendente;
+                aplicarFiltros();
+            });
+        });
+
+        // ===== 7. DIBUJAR AL CARGAR =====
+        dibujarTabla(juegos);
+    </script>
+
+
+<a href="trabajo 1.html" class="boton-enlace"> Volver al la pagina principal</a>
+</body>
+</html>

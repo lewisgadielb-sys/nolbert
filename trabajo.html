@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actividad de programación web">
+    <meta name="author" content="Mirra">
+    <title>Mi Actividad de Programación</title>
+
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- ===== ENCABEZADO ===== -->
+    <header>
+        <h1 id="titulo-principal">practica del nober </h1>
+        <p>Demostración de <span class="destacado">HTML y CSS</span></p>
+    </header>
+
+    <!-- ===== NAVEGACIÓN ===== -->
+    <nav>
+        <ul>
+            <li><a href="inicio">Inicio</a></li>
+            <li><a href="#tabla">Tabla</a></li>
+            <li><a href="#formulario">Formulario</a></li>
+            <li><a href="#multimedia">Multimedia</a></li>
+        </ul>
+    </nav>
+
+   
+    <section id="inicio">
+        <h2>Sobre mí</h2>
+        <p> soy Lewis Gadiel <strong>y ahora les </strong>mostrare al profe nolber lo q domino de <strong> HTML Y CSS</strong> </p>
+        <blockquote>aqui aplica sangria a este texto</blockquote>
+        <p>tambien se hacer formulas H<sub>2</sub>O y potencias: 2<sup>3</sup> = 8</p>
+    </section>
+
+    
+    <section id="tabla">
+        <h2>Tabla de Ejemplo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Lenguaje</th>
+                    <th>Uso</th>
+                    <th>Dificultad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td>Estructura</td>
+                    <td>Fácil</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>Estilos</td>
+                    <td>Media</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Interactividad</td>
+                    <td>Media-Alta</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    
+    <section id="formulario">
+        <h2>Formulario de Contacto</h2>
+        <form action="#" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+
+            <label for="email">Correo:</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="1" max="120">
+
+            <label for="pais">País:</label>
+            <select id="pais" name="pais">
+                <option value="rd">República Dominicana</option>
+                <option value="mx">México</option>
+                <option value="es">España</option>
+            </select>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+   <!-- ===== MULTIMEDIA ===== -->
+<section id="multimedia">
+    <h2>Multimedia</h2>
+
+    <!-- Imagen 1: normal con estilo base -->
+    <h3>1. Mi imagen (estilo base)</h3>
+    <img src="multimedia/gatomMagico.jpg" alt="Gato mágico con sombrero">
+
+    <!-- Imagen 2: circular (avatar) -->
+    <h3>2. Imagen circular</h3>
+    <img src="multimedia/amet langosta.jpg" alt="langosta amet" class="img-circular">
+
+    
+    <!-- Imagen 4: blanco y negro, vuelve a color al pasar el mouse -->
+    <h3>3. Imagen blanco y negro (pasa el mouse)</h3>
+    <img src="multimedia/fino.jpg" alt="fino señores" class="img-bn">
+
+    <!-- Imagen 5: crece al pasar el mouse -->
+    <h3>4. Imagen que crece (pasa el mouse)</h3>
+    <img src="multimedia/gato indignado.jpg" alt="Gato indignado que crece" class="img-zoom">
+
+    <!-- Imagen 6: borde decorativo -->
+    <h3>5. Imagen con borde decorativo</h3>
+    <img src="multimedia/omunculo.jpg" alt="Gato mágico con borde" class="img-borde">
+
+    <!-- Galería con flex -->
+    <h3>6. Galería con Flexbox</h3>
+    <div class="galeria">
+        <img src="multimedia/pablo.png" alt="pablo">
+        <img src="multimedia/pato con tasa.jpg" alt="pato con tasa">
+        <img src="multimedia/perro sandia.jpg" alt="perro sandia">
+        <img src="multimedia/gatomMagico.jpg" alt="Gato mágico 4">
+    </div>
+
+    <!-- Tu video (ya estaba) -->
+    <h3>Mi video</h3>
+    <video class="multimedia" controls poster="https://picsum.photos/400/200">
+        <source src="multimedia/videoplayback.mp4" type="video/mp4">
+    </video>
+
+    <!-- Tu audio (ya estaba) -->
+    <h3>Mi audio</h3>
+    <audio class="multimedia" controls>
+        <source src="multimedia/audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <h3>Pasos para aprender HTML:</h3>
+    <ol>
+        <li>Aprender etiquetas básicas</li>
+        <li>Practicar con ejemplos</li>
+        <li>Crear proyectos</li>
+    </ol>
+
+    </section>
+
+
+    <!-- ===== ENLACES ===== -->
+    <section id="enlaces">
+        <h2>Enlaces</h2>
+
+        <h3>Visita mi otra página:</h3>
+        <a href="otra_pagina.html" class="boton-enlace">Ir a mi otra página</a>
+
+        <h3>Visita un sitio externo:</h3>
+        <a href="https://www.instagram.com/" target="_blank" class="boton-enlace">Ir a ig</a>
+    </section>
+
+
+    
+    <footer>
+        <p>&copy; 2026 Todos los derechos reservados para Lewis y la ia :)</p>
+    </footer>
+
+</body>
+</html>
