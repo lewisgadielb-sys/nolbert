@@ -221,11 +221,6 @@ audio.multimedia {
     border: 4px solid #764ba2;       /* Borde morado decorativo */
 }
 
-/* 2. Imagen con sombra fuerte */
-.img-sombra {
-    max-width: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);   /* Sombra grande y visible */
-}
 
 /* 3. Imagen en blanco y negro que vuelve a color al pasar el mouse */
 .img-bn {
